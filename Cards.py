@@ -34,3 +34,5 @@ class Cards:
             return self.rank >= other.rank
         else:
             return None
+    def __eq__(self, other):
+        return self.rank == other.rank
