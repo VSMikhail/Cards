@@ -1,5 +1,6 @@
 from pprint import pprint
 from Game import GameFool
+from Cards import Cards
 
 
 game = GameFool(6, 2)
