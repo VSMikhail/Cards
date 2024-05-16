@@ -1,7 +1,7 @@
 from Game import GameFool
 
 
-game = GameFool(11, 2)
+game = GameFool(6, 2)
 game.deal_cards()
 continue_game = True
 goes, beat = 0, 1

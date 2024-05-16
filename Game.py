@@ -2,8 +2,8 @@ from Cards import Cards
 import random
 
 
-def move_cards(move_from, indexes, move_to):
-    [move_to.append(move_from.pop(index)) for index in sorted(indexes, reverse=True)]
+def move_cards(move_from, indexes, move_to, reverse=True):
+    [move_to.append(move_from.pop(index)) for index in sorted(indexes, reverse=reverse)]
 
 
 class GameFool:
@@ -19,12 +19,12 @@ class GameFool:
     def add_cards_to_hands(self):
         for _ in self.cards_in_hands:
             cards_needed = len(_) - 6
-            if len(self.deck) >= 6:
-                move_cards(self.deck, range(0, cards_needed, -1), _)
+            if len(self.deck) > 6:
+                move_cards(self.deck, range(0, cards_needed, -1), _, False)
             elif (len(self.deck) + cards_needed) >= 0:
-                move_cards(self.deck, range(0, cards_needed, -1), _)
+                move_cards(self.deck, range(0, cards_needed, -1), _, False)
             elif (len(self.deck) + cards_needed) < 0:
-                move_cards(self.deck, range(0, - len(self.deck), -1), _)
+                move_cards(self.deck, range(0, - len(self.deck), -1), _, False)
             else:
                 break
 
@@ -114,3 +114,8 @@ class GameFool:
                         print('Wrong suit')
             else:
                 print('Wrong card')
+            if len(self.cards_on_desk[1]) == 6:
+                continue_round = False
+            if not self.cards_in_hands[who_beat]:
+                continue_round = False
+
