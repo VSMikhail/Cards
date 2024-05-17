@@ -115,7 +115,11 @@ class GameFool:
             else:
                 print('Wrong card')
             if len(self.cards_on_desk[1]) == 6:
+                move_cards(self.cards_on_desk[0], range(0, len(self.cards_on_desk[0])), self.beaten_cards)
+                move_cards(self.cards_on_desk[1], range(0, len(self.cards_on_desk[1])), self.beaten_cards)
                 continue_round = False
             if not self.cards_in_hands[who_beat]:
+                move_cards(self.cards_on_desk[0], range(0, len(self.cards_on_desk[0])), self.beaten_cards)
+                move_cards(self.cards_on_desk[1], range(0, len(self.cards_on_desk[1])), self.beaten_cards)
                 continue_round = False
 
